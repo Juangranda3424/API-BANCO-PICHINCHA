@@ -18,7 +18,6 @@ class MovimientoRepository:
                 
                 conexion.commit()  # Confirmar la transacción
                 
-                # ORDEN IMPORTANTE: Primero insertar en movimientosintarjeta, luego en deposito
                 if tipo == True:
                     MovimientoRepository._insert_movimiento_sin_tarjeta(id_movimiento,monto,numeroCelular,'Transferencia')
                     MovimientoRepository._insert_movimiento_transferencia(id_movimiento,numeroCuentaOrigen,numeroCuentaDestino)

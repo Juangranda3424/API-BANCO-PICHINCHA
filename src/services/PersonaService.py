@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from src.repository.PersonaRepository import PersonaRepository
 
 class PersonaService:
@@ -15,8 +16,8 @@ class PersonaService:
         resultado.append(infoTypeJSON)
         return resultado  
     
-    def getNumero_Cuentas(numeroCuenta):
-        cuentas = PersonaRepository.info_cuentas_persona(numeroCuenta)
+    def getNumero_Cuentas(id):
+        cuentas = PersonaRepository.info_cuentas_persona(id)
         resultado = []
         for cuenta in cuentas:
             infoTypeJSON = {

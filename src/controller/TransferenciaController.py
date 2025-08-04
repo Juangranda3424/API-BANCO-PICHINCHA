@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from src.services.TransferenciaService import TransferenciaService
 from src.repository.MovimientoRepository import MovimientoRepository
 from flask import request, jsonify

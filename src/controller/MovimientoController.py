@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import jsonify
 from src.services.MovimientoService import MovimientoService
 
