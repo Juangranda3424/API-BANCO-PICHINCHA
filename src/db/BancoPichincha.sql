@@ -228,6 +228,12 @@ CREATE TABLE VAUCHER (
    COSTO_VAUCHER        DECIMAL
 );
 
+CREATE TABLE USUARIOS (
+   ID_USUARIO SERIAL PRIMARY KEY NOT NULL,
+   USERNAME_USUARIO VARCHAR(20) UNIQUE NOT NULL,
+   PASSWORD_USUARIO TEXT NOT NULL
+);
+
 -- ==============================================================
 -- Índices únicos adicionales y restricciones referenciales (FK)
 -- ==============================================================
