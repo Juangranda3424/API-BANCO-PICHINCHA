@@ -84,6 +84,13 @@ def getCuentasPersona(id):
     return PersonaController.getCuentas_persona(id)
 
 
+
+@app.route('/persona-info/<id>', methods=['GET'])
+def getPersonaInfo(id):
+    return PersonaController.getInf_persona(id)
+
+
+
 # Datos que deben enviar en el body
 #     numeroCuentaOrigen = string
 #     numeroCuentaDestino = string

@@ -27,4 +27,20 @@ class PersonaService:
             }
             resultado.append(infoTypeJSON)
         return resultado  
+    
+    def getInfo_Persona(id):
+        info_persona =  PersonaRepository.info_persona(id)
+        resultado = []
+        infoTypeJSON = {
+            'id': info_persona[0],
+            'direccion': info_persona[1],
+            'telefono': info_persona[2],
+            'email': info_persona[3],
+            'tipoPersona': info_persona[4],
+            'nombrePersona': info_persona[5]
+        }
+        
+        resultado.append(infoTypeJSON)
+        return resultado
+
      

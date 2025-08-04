@@ -20,4 +20,13 @@ class PersonaController:
         except Exception as e:
             print(f"Error: {e}")
             return jsonify({"error": "Error al obtener información del cliente"}), 500
+        
+
+    def getInf_persona(id):
+        try:
+            resultado = PersonaService.getInfo_Persona(id)
+            return jsonify(resultado)
+        except Exception as e:
+            print(f"Error: {e}")
+            return jsonify({"error": "Error al obtener información del cliente"}), 500
 

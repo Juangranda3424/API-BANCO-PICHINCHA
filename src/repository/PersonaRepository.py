@@ -23,3 +23,13 @@ class PersonaRepository:
             print(f"Error: {e}")
             return None
 
+
+    def info_persona(id):
+        try:
+            with Conn.conectar() as conexion:  
+                pgcursor = conexion.cursor()
+                pgcursor.execute("select * from persona where p.id_persona = %s;", (id,))
+                return pgcursor.fetchall()
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
