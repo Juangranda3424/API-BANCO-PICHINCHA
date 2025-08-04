@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Importar configuración UTF-8 antes que nada
 from src.config.utf8_config import configure_utf8
+from flask_cors import CORS
 configure_utf8()
 
 from flask import Flask
@@ -12,6 +13,7 @@ from src.controller.MovimientoController import MovimientoController
 from src.controller.RetiroController import RetiroController
 
 app = Flask(__name__)
+CORS(app)
 
 # Configurar Flask para manejar UTF-8 correctamente
 app.config['JSON_AS_ASCII'] = False
