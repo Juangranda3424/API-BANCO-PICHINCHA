@@ -28,8 +28,8 @@ class PersonaRepository:
         try:
             with Conn.conectar() as conexion:  
                 pgcursor = conexion.cursor()
-                pgcursor.execute("select * from persona where p.id_persona = %s;", (id,))
-                return pgcursor.fetchall()
+                pgcursor.execute("select * from persona where id_persona = %s;", (id,))
+                return pgcursor.fetchone()
         except Exception as e:
             print(f"Error: {e}")
             return None
