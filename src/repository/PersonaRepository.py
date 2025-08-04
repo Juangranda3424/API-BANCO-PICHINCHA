@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from src.db.Conn import Conn
 
 class PersonaRepository:

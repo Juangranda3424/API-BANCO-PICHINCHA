@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# Importar configuración UTF-8 antes que nada
+from src.config.utf8_config import configure_utf8
+configure_utf8()
+
 from flask import Flask
 from src.controller.PersonaController import PersonaController
 from src.controller.DepositoController import DepositoController
@@ -6,6 +11,17 @@ from src.controller.MovimientoController import MovimientoController
 from src.controller.RetiroController import RetiroController
 
 app = Flask(__name__)
+
+# Configurar Flask para manejar UTF-8 correctamente
+app.config['JSON_AS_ASCII'] = False
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+app.config['JSON_SORT_KEYS'] = False
+
+# Configurar todas las respuestas con UTF-8
+@app.after_request
+def after_request(response):
+    response.headers['Content-Type'] = 'application/json; charset=utf-8'
+    return response
 
 #Devuelve solo un objeto 
 # [
