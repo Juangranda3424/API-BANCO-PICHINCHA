@@ -21,9 +21,9 @@ class PersonaService:
         resultado = []
         for cuenta in cuentas:
             infoTypeJSON = {
-                'numeroCuenta': cuenta[0],
-                'tipoCuenta': cuenta[1],
-                'saldo': cuenta[2]
+                'accountNumber': cuenta[0],
+                'accountType': cuenta[1],
+                'balance': cuenta[2]
             }
             resultado.append(infoTypeJSON)
         return resultado  
