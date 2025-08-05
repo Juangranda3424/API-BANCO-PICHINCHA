@@ -25,7 +25,7 @@ class DepositoController:
             else:
                 return jsonify({"error": "Error en el depósito del cliente"}), 500
         except Exception as e:
-            return jsonify({"error": "Error en el servidor"}), 500
+            return jsonify({"error": "Error en el servidor", "e": e}), 500
 
 
 

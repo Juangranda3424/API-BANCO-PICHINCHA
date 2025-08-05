@@ -117,6 +117,8 @@ def getPersonaInfo(id):
 
 @app.route("/deposito", methods=['POST'])
 def updateSaldoDepositoController():
+    print("Actualizando Saldo por Depósito")
+
     return DepositoController.updateSaldo_Cuenta()
 
 
