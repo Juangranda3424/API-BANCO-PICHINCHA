@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from src.services.RetiroService import RetiroService
 from src.repository.MovimientoRepository import MovimientoRepository
+
 from flask import request, jsonify
 
 class RetiroController:
@@ -24,6 +25,17 @@ class RetiroController:
             return jsonify({"mensaje": "Codigo generado correctamente"}), 200
         else:
             return jsonify({"mensaje": "Error al generar el codigo"}), 500
+    
+    def retirarMonto_sin_tarjeta():
+        datos = request.get_json()  # Obtener datos del POST
+        codigo = datos.get('codigo')
+        resultado = RetiroService.retirarMonto_sin_trajeta(codigo)
+        
+        if resultado:
+            return jsonify({"mensaje": "Retiro correctamente realizado"}), 200
+        else:
+            return jsonify({"mensaje": "Error en el retiro del monnto"}), 500
+
 
 
 

@@ -1,5 +1,5 @@
 from src.db.Conn import Conn
-from datetime import date
+from datetime import date, datetime
 
 class MovimientoRepository:
     
@@ -84,7 +84,8 @@ class MovimientoRepository:
         try:
             with Conn.conectar() as conexion:  # Se cierra automáticamente
                 pgcursor = conexion.cursor()
-                pgcursor.execute("insert into retirosintarjeta values (%s,%s,%s);", (id,codigo,1))
+                fecha_actual = datetime.now()
+                pgcursor.execute("insert into retirosintarjeta values (%s,%s,%s,%s);", (id,codigo,1,fecha_actual))
                 conexion.commit()
                 #print("Depósito insertado")
         except Exception as e:

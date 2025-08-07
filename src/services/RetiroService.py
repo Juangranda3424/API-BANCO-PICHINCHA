@@ -1,4 +1,6 @@
 from src.repository.RetiroRepository import RetiroRepository
+from src.repository.DepositoRepository import DepositoRepository
+
 import random
 import smtplib
 from email.mime.text import MIMEText
@@ -22,6 +24,41 @@ class RetiroService:
             print(f"Error: {e}")
             return False
         
+    @staticmethod
+    def retirarMonto_sin_trajeta(codigo):
+        try:
+            numMax = RetiroRepository._validateNumMaxRetiro(codigo)
+            print(numMax[0])
+            if int(numMax[0]) == 0:
+                return False
+
+            codigoValido = RetiroRepository._retirar_monto(codigo)
+
+            if codigoValido != None:
+                resultado = RetiroRepository._getCuenta_monto_max(str(codigoValido[0]))
+                if RetiroService._descontarCuenta(resultado[0], resultado[1]):
+                    RetiroRepository._updateNumMaxRetiro(numMax[0],codigo)
+                    return True
+                else:
+                    return False
+            else:
+                return False
+                
+        except Exception as e:
+            print(f"Error: {e}")
+            return False
+    
+
+    def _descontarCuenta(monto,numeroCuenta):
+        saldo = RetiroRepository._saldo_actual(numeroCuenta)
+        if float(saldo[0]) < float(monto):
+            return False
+        else:
+            saldo_cuenta_origen = DepositoRepository.saldo_persona(numeroCuenta)
+            resultado_origen = float(saldo_cuenta_origen[0]) - float(monto);
+            DepositoRepository.actualizacion_saldo_persona(str(resultado_origen),numeroCuenta)
+            return True
+
 
     @staticmethod
     def _enviar_codigo_acceso(email, nombre_persona):

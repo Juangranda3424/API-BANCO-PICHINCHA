@@ -144,6 +144,13 @@ def updateSaldoTransferenciaController():
 def retiroSinTarjetas():
     return RetiroController.getRetiro_sin_tarjeta()
 
+# Datos que deben enviar en el body
+#     codigo = numero
+
+@app.route("/retirar-monto-sin-trajeta", methods=['POST'])
+def retirarMontoSinTarjetas():
+    return RetiroController.retirarMonto_sin_tarjeta()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
