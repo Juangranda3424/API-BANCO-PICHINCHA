@@ -37,6 +37,8 @@ pip install flask
 
 pip install psycopg2-binary
 
+## Para Swagger
+pip install flasgger
 ```
 ## Endpoints de la API
 
